@@ -44,11 +44,11 @@ class TweetDfExtractor:
     def find_full_text(self) -> list:
         text = []
         for each_t in self.tweets_list:
-            if not each_t['truncated']:
+            
+            if 'retweeted_status' in each_t.keys():
+                text.append(each_t['retweeted_status']['full_text'])
+            else:
                 text.append(each_t['full_text'])
-            elif 'retweeted' in each_t.keys() and 'extended_tweet' in each_t['retweeted'].keys():
-                text.append(each_t['full_text'] + each_t['retweeted']
-                            ['extended_tweet']['full_text'])
         return text
 
     def find_sentiments(self, text) -> list:
