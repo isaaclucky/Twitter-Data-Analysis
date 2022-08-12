@@ -112,7 +112,6 @@ class TweetDfExtractor:
 
     def find_lang(self) -> list:
         lang = [x['lang'] for x in self.tweets_list]
-
         return lang
 
     def find_hashtags(self) -> list:
