@@ -57,11 +57,11 @@ class TestTweetDfExtractor(unittest.TestCase):
         )
 
     def test_find_full_text(self):
-        text = ['RT @i_ameztoy: Extra random image (I):\n\nLets focus in one very specific zone of the western coast -&gt; Longjing District, Taichung #City, #Ta…',
-                "RT @IndoPac_Info: #China's media explains the military reasons for each area of the drills in the #Taiwan Strait\n\nRead the labels in the pi…",
+        text = ['Extra random image (I):\n\nLets focus in one very specific zone of the western coast -&gt; Longjing District, Taichung #City, #Taiwan \n \n#Copernicus #Sentinel2 🛰️ 2022-08-03 \nFull Size -&gt; https://t.co/39IOoqJZR9 🧐 https://t.co/rdf21paD5P',
+                "#China's media explains the military reasons for each area of the drills in the #Taiwan Strait\n\nRead the labels in the pictures ⬇️ Via CGTN https://t.co/0J4ilou4iv",
                 "China even cut off communication, they don't anwer phonecalls from the US. But here clown @ZelenskyyUa enters the stage to ask #XiJinping to change Putin's mind.",
                 "Putin to #XiJinping : I told you my friend, Taiwan will be a vassal state, including nukes, much like the Ukrainian model. I warned you... But it took Pelosi to open China's eyes.",
-                'RT @ChinaUncensored: I’m sorry, I thought Taiwan was an independent country because it had its own government, currency, military, travel d…']
+                'I’m sorry, I thought Taiwan was an independent country because it had its own government, currency, military, travel documents, Olympic team etc. while the PRC was a gangster regime run by a bunch of communist bandits. I apologize for the confusion. #taiwan https://t.co/j4rM8cDdD8']
 
         self.assertEqual(self.df.find_full_text(), text)
 
@@ -69,8 +69,9 @@ class TestTweetDfExtractor(unittest.TestCase):
         self.assertEqual(
             self.df.find_sentiments(self.df.find_full_text()),
             (
-                [-0.125, -0.1, 0.0, 0.1, -6.938893903907228e-18],
-                [0.190625, 0.1, 0.0, 0.35, 0.55625]
+                [-0.030000000000000006, -0.1, 0.0, 0.1, -6.938893903907228e-18],
+                [0.2625, 0.1, 0.0, 0.35, 0.55625]
+
             ),
         )
 
